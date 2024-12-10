@@ -1,0 +1,34 @@
+package day21;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class BankTransaction {
+	
+	public static void main (String [] args) throws InterruptedException {
+		
+		WebDriver driver = new ChromeDriver ();
+		
+		driver.manage().window().maximize();
+		
+		driver.get("https:www.idfcfirstbank.com");
+		
+		Thread.sleep(2000);
+		
+		driver.findElement(By.xpath("//*[@id='dropdownMenuLogin']")).click();
+		
+		driver.findElement(By.xpath("//*[@href=\"https://my.idfcfirstbank.com/login\"]")).click();
+		
+		Thread.sleep(2000);
+		
+		driver.findElement(By.xpath("//div[@class=\"sc-fsYeqs OZPfw\"]"));
+		
+		driver.findElement(By.xpath("//div//input[@name=\"mobileNumber\"]")).sendKeys("7008246898");
+		
+		driver.findElement(By.xpath("//*[@type=\"submit\"]")).click();
+		
+		
+	}
+
+}

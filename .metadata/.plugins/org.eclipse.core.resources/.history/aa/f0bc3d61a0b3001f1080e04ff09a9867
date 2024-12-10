@@ -1,0 +1,22 @@
+package day10;
+
+public class TestPc {
+	
+	
+	
+	int empnp;
+	String empid;
+	String empdpt;
+	
+	int display()
+	{
+		return empnp;
+		
+	}
+
+	public static void main(String[] args) {
+		TestPc emp1= new TestPc();
+		emp1.empnp=23;
+	}
+
+}

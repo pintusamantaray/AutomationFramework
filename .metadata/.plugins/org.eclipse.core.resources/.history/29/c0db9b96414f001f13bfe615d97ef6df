@@ -1,0 +1,67 @@
+package day21;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WindowType;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+public class MailLoginAutomation {
+	public static void main (String [] args ) throws InterruptedException {
+		
+		WebDriver driver = new ChromeDriver();
+		
+		driver.manage().window().maximize();
+		
+		driver.get("https://ishine.apmosys.com/#/login");
+		
+		driver.findElement(By.xpath("//*[@id=\"username\"]")).sendKeys("rajendra.samantaray@apmosys.com");
+		
+		driver.findElement(By.xpath("//*[@id=\"userPassword\"]")).sendKeys("Jamukoli@1");
+		
+		driver.findElement(By.xpath("//*[@type=\"submit\"]")).click();
+		
+		Thread.sleep(2500);
+		
+		driver.switchTo().newWindow(WindowType.TAB);
+		
+		driver.navigate().to("https://mail.apmosys.com/webmail/");
+		Thread.sleep(2000);
+		
+		driver.findElement(By.xpath("//*[@name=\"email-address\"]")).sendKeys("rajendra.samantaray@apmosys.com");
+		
+		driver.findElement(By.xpath("//*[@name=\"next\"]")).click();
+		
+		Thread.sleep(2000);
+		
+		driver.findElement(By.xpath("//*[@type=\"password\"]")).sendKeys("July@2024");
+		
+		driver.findElement(By.xpath("//*[@name=\"next\"]")).click();
+		
+		try {
+			driver.switchTo().frame(driver.findElement(By.xpath("//*[@id=\"gui.frm_main.main.mailview#block\"]")));
+			}catch(Exception e) {
+				System.out.println("no frame to switch");
+			}
+		try {
+			driver.findElement(By.id("gui.frm_main.filter#loader")).click();
+			Thread.sleep(1000);
+		}catch(Exception e) {
+			System.out.println("unable to refresh");
+			e.printStackTrace();
+		}	
+		
+		Thread.sleep(3000);
+		String otp=driver.findElement(By.xpath("")).getText();	
+		otp=otp.substring(21, 27);
+		Thread.sleep(2000);
+		
+		driver.findElement(By.id("userOtp")).sendKeys(otp);
+		driver.findElement(By.xpath("//div[@class='otp__form']/button")).click();
+		Thread.sleep(2000);
+		
+		
+	}
+
+}

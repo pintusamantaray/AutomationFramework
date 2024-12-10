@@ -1,0 +1,40 @@
+package day21;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WindowType;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class MailLoginAutomation {
+	public static void main (String [] args ) throws InterruptedException {
+		
+		WebDriver driver = new ChromeDriver();
+		
+		driver.get("https://ishine.apmosys.com/#/login");
+		
+		driver.findElement(By.xpath("//*[@id=\"username\"]")).sendKeys("rajendra.samantaray@apmosys.com");
+		
+		driver.findElement(By.xpath("//*[@id=\"userPassword\"]")).sendKeys("Jamukoli@1");
+		
+		driver.findElement(By.xpath("//*[@type=\"submit\"]")).click();
+		
+		Thread.sleep(2500);
+		
+		driver.switchTo().newWindow(WindowType.TAB);
+		
+		driver.navigate().to("https://mail.apmosys.com/webmail/");
+		
+		driver.findElement(By.xpath("//*[@name='email-address']")).sendKeys("rajendra.samantaray@apmosys.com");
+		
+		driver.findElement(By.xpath("//*[@name=\"next\"]")).click();
+		
+		Thread.sleep(2000);
+		
+		driver.findElement(By.xpath("//*[@type=\"password\"]")).sendKeys("July@2024");
+		
+		driver.findElement(By.xpath("//*[@name=\"next\"]")).click();
+		
+		
+	}
+
+}
