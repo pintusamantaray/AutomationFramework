@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author apmosys
- *
- */
-module Newworld {
-}
